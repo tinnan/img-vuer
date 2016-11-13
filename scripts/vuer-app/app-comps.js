@@ -1,6 +1,11 @@
 // Image directory selector.
 Vue.component('img-dir-selector', {
-  template: '<input v-on:change="selectDir($event.target.value)" type="file" />',
+  data: function () {
+    return {
+      imgDirPath: ''
+    }
+  },
+  template: '<input type="text" value="{{imgDirPath}}" readonly /><button v-on:click></button>',
   methods: {
     selectDir: function(val) {
       console.log(val)
