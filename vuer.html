@@ -3,13 +3,17 @@
     <head>
       <meta charset="UTF-8">
       <title>Images Vuer</title>
-      <link type="text/css" href="style/app.css" />
+      <link type="text/css" href="style/app.css" rel="stylesheet" />
       
       <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
       <!-- Vue.JS include -->
       <script src="scripts/vuejs/vue.js"></script>
       <!-- JQuery 3.1.1 include -->
       <script src="scripts/jquery/jquery-3.1.1.min.js"></script>
+      <!-- Vuer app constants -->
+      <script src="scripts/vuer-app/constants.js"></script>
+      <!-- Vuer app functions -->
+      <script src="scripts/vuer-app/functions.js" ></script>
       <!-- Vuer app components -->
       <script src="scripts/vuer-app/app-comps.js"></script>
       <!-- Vuer app include -->
@@ -19,8 +23,12 @@
 
   <body>
     <div id="app">
-      <div>
-        <img-dir-selector webkitdirectory></img-dir-selector>
+      <div class="path-container">
+        <button class="path-select" v-on:click="selectDir">Browse</button>
+        <input class="path-display" type="text" v-model="imgDirPath" readonly />
+      </div>
+      <div class="criteria-container">
+        
       </div>
       
     </div>
