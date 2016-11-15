@@ -13,7 +13,11 @@ var selectDirectory = function() {
     if (t !== 'undefined') {
       this.sites = t[T_SITES]
       this.actresses = t[T_ACC]
-      this.taglist = t[T_TAGLIB]
+      var tags = t[T_TAGLIST]
+      this.taglist = tags.filter((tag) => { return T_TYPE_TAG === tag.Type }) // Filter only normal tag to display on select.
+      // set underlying tag list as Map.
+      this._taglist = new Map()
+      tags.forEach((item) => { this._taglist.set(item.Name, item) })
     }
   }
 }
