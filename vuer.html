@@ -10,6 +10,9 @@
       <script src="scripts/vuejs/vue.js"></script>
       <!-- JQuery 3.1.1 include -->
       <script src="scripts/jquery/jquery-3.1.1.min.js"></script>
+      <!-- jsonlint, JSON validator library include -->
+      <script src="scripts/jsonlint/jsonlint.js"></script>
+      
       <!-- Vuer app constants -->
       <script src="scripts/vuer-app/constants.js"></script>
       <!-- Vuer app functions -->
@@ -28,7 +31,9 @@
         <input class="path-display" type="text" v-model="imgDirPath" readonly />
       </div>
       <div class="criteria-container">
-        
+        <select>
+          <option v-for="site in sites" :value="site">{{ site }}</option>
+        </select>
       </div>
       
     </div>

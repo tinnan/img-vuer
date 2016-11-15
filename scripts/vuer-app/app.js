@@ -8,7 +8,7 @@ $(function() {
       taglist: [],
     },
     methods: {
-      selectDir: _selectDirectory
+      selectDir: selectDirectory
     }
   })
 })
