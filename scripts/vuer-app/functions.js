@@ -5,19 +5,33 @@ var selectDirectory = function() {
     properties: [ 'openDirectory' ]
   })
   
-  if (typeof dirpath !== 'undefined'
+  if (typeof dirpath !== undefined
       && dirpath.length > 0) { 
     // If user select a fodler.
     this.imgDirPath = dirpath[0] // get selected folder path.
     var t = openAndLoadJson(this.imgDirPath)
-    if (t !== 'undefined') {
-      this.sites = t[T_SITES]
-      this.actresses = t[T_ACC]
-      var tags = t[T_TAGLIST]
-      this.taglist = tags.filter((tag) => { return T_TYPE_TAG === tag.Type }) // Filter only normal tag to display on select.
-      // set underlying tag list as Map.
-      this._taglist = new Map()
-      tags.forEach((item) => { this._taglist.set(item.Name, item) })
+    if (t !== undefined) {
+      if (t[T_SITES] !== undefined) {
+        this.sites = t[T_SITES]
+      } else {
+        this.sites = []
+      }
+      
+      if (t[T_ACC] !== undefined) {
+        this.actresses = t[T_ACC]
+      } else {
+        this.actresses = []
+      }
+      
+      this.u_taglist = new Map()
+      if (t[T_TAGLIST] !== undefined) {
+        var tags = t[T_TAGLIST]
+        this.taglist = tags.filter((item) => { return T_TYPE_TAG === item.Type }) // Filter only normal tag to display on select.
+          .map((item) => { return item.Name })
+        tags.forEach((item) => { this.u_taglist.set(item.Name, item) }) // set underlying tag list as Map.
+      } else {
+        this.taglist = []
+      }
     }
   }
 }

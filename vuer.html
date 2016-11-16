@@ -32,16 +32,18 @@
       </div>
       <div class="criteria-container">
         <select multiple v-model="selectedSites">
-          <option v-for="site in sites" :value="site">{{site}}</option>
+          <option v-for="site in sites" :value="site" >{{site}}</option>
         </select>
         <select multiple v-model="selectedActresses">
           <option v-for="act in actresses" :value="act">{{act}}</option>
         </select>
         <select multiple v-model="selectedTags">
-          <option v-for="tag in taglist.values" :value="tag.Name">{{tag.Name}}</option>
+          <option v-for="tag in taglist" :value="tag">{{tag}}</option>
         </select>
       </div>
-      
+      <div class="selected-tags-list">
+        <span v-for="seltag in allSelectedTags">{{seltag}}, </span>
+      </div>
     </div>
   </body>
 </html>
